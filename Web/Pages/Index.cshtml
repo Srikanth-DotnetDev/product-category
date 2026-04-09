@@ -1,0 +1,81 @@
+@page
+@model AprilPractice.Web.Pages.IndexModel
+@{
+    ViewData["Title"] = "Home";
+}
+
+<div class="container mt-5">
+    <div class="jumbotron text-center bg-light p-5 rounded">
+        <h1 class="display-4">Product Management System</h1>
+        <p class="lead">A modern ASP.NET Core application with Entity Framework Core, multiple API endpoints, and a beautiful UI.</p>
+        <hr class="my-4">
+        <p>Manage your products and categories with ease using our intuitive interface.</p>
+    </div>
+
+    <div class="row mt-5">
+        <div class="col-md-4">
+            <div class="card h-100">
+                <div class="card-body text-center">
+                    <i class="bi bi-box-seam display-1 text-primary"></i>
+                    <h5 class="card-title mt-3">Products</h5>
+                    <p class="card-text">Manage your product inventory with full CRUD operations.</p>
+                    <a asp-page="/Products/Index" class="btn btn-primary">View Products</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card h-100">
+                <div class="card-body text-center">
+                    <i class="bi bi-tags display-1 text-success"></i>
+                    <h5 class="card-title mt-3">Categories</h5>
+                    <p class="card-text">Organize products into categories for better management.</p>
+                    <a asp-page="/Categories/Index" class="btn btn-success">View Categories</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card h-100">
+                <div class="card-body text-center">
+                    <i class="bi bi-code-slash display-1 text-info"></i>
+                    <h5 class="card-title mt-3">API</h5>
+                    <p class="card-text">Access RESTful API endpoints for integration.</p>
+                    <a href="/openapi/v1.json" target="_blank" class="btn btn-info">View API</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row mt-5">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                    <h5>API Endpoints</h5>
+                </div>
+                <div class="card-body">
+                    <table class="table table-sm">
+                        <thead>
+                            <tr>
+                                <th>Method</th>
+                                <th>Endpoint</th>
+                                <th>Description</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td><span class="badge bg-success">GET</span></td><td><code>/api/products</code></td><td>Get all products</td></tr>
+                            <tr><td><span class="badge bg-success">GET</span></td><td><code>/api/products/{id}</code></td><td>Get product by ID</td></tr>
+                            <tr><td><span class="badge bg-success">GET</span></td><td><code>/api/products/category/{categoryId}</code></td><td>Get products by category</td></tr>
+                            <tr><td><span class="badge bg-primary">POST</span></td><td><code>/api/products</code></td><td>Create new product</td></tr>
+                            <tr><td><span class="badge bg-warning">PUT</span></td><td><code>/api/products/{id}</code></td><td>Update product</td></tr>
+                            <tr><td><span class="badge bg-danger">DELETE</span></td><td><code>/api/products/{id}</code></td><td>Delete product</td></tr>
+                            <tr><td><span class="badge bg-success">GET</span></td><td><code>/api/categories</code></td><td>Get all categories</td></tr>
+                            <tr><td><span class="badge bg-success">GET</span></td><td><code>/api/categories/{id}</code></td><td>Get category by ID</td></tr>
+                            <tr><td><span class="badge bg-primary">POST</span></td><td><code>/api/categories</code></td><td>Create new category</td></tr>
+                            <tr><td><span class="badge bg-warning">PUT</span></td><td><code>/api/categories/{id}</code></td><td>Update category</td></tr>
+                            <tr><td><span class="badge bg-danger">DELETE</span></td><td><code>/api/categories/{id}</code></td><td>Delete category</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

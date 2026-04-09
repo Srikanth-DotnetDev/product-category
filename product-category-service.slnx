@@ -1,0 +1,6 @@
+<Solution>
+  <Project Path="AprilPractice.Application/Application.csproj" />
+  <Project Path="AprilPractice.Domain/Domain.csproj" />
+  <Project Path="AprilPractice.Infrastructure/Infrastructure.csproj" />
+  <Project Path="AprilPractice.Web/Web.csproj" />
+</Solution>
