@@ -1,9 +1,13 @@
 using AprilPractice.Application.Interfaces;
 using AprilPractice.Infrastructure.Data;
 using AprilPractice.Infrastructure.Repositories;
+using AprilPractice.Infrastructure.Services;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
+
+// Add Application Insights telemetry
+builder.Services.AddApplicationInsightsTelemetry();
 
 // Add services to the container.
 builder.Services.AddDbContext<AppDbContext>(options =>
@@ -12,6 +16,13 @@ builder.Services.AddDbContext<AppDbContext>(options =>
 // Register repositories
 builder.Services.AddScoped<IProductRepository, ProductRepository>();
 builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
+
+// Register Azure Key Vault service
+var keyVaultUrl = builder.Configuration["AzureKeyVault:VaultUrl"];
+if (!string.IsNullOrEmpty(keyVaultUrl))
+{
+    builder.Services.AddSingleton<IKeyVaultService>(new KeyVaultService(keyVaultUrl));
+}
 
 builder.Services.AddRazorPages();
 builder.Services.AddControllers();
@@ -24,7 +35,7 @@ var app = builder.Build();
 using (var scope = app.Services.CreateScope())
 {
     var context = scope.ServiceProvider.GetRequiredService<AppDbContext>();
-    context.Database.EnsureCreated();
+    await context.Database.EnsureCreatedAsync();
 }
 
 // Configure the HTTP request pipeline.
